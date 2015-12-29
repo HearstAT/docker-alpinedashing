@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cd $DASHING_HOME
 
@@ -9,7 +9,7 @@ echo "Installing Gems"
 bundle install
 
 echo "Sourcing Config File"
-source ${DASHING_HOME}/config/dashing.conf
+source ./config/dashing.conf
 
 echo "Starting Dashing"
 exec dashing start -p $PORT
