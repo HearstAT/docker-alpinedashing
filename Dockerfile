@@ -4,6 +4,7 @@ MAINTAINER HearstAutomation Team <atat@hearst.com>
 
 ENV DASHING_HOME /dashing
 ENV PORT 3030
+ENV SHELL /bin/bash
 
 RUN gem install bundle dashing
 RUN mkdir $DASHING_HOME && \
@@ -12,12 +13,7 @@ RUN mkdir $DASHING_HOME && \
     mkdir $DASHING_HOME/config && \
     mv $DASHING_HOME/config.ru $DASHING_HOME/config/config.ru && \
     ln -s $DASHING_HOME/config/config.ru $DASHING_HOME/config.ru && \
-    rm -rf $DASHING_HOME/dashboards/* $DASHING_HOME/jobs/* && \
-    addgroup dashing && \
-    adduser -h $DASHING_HOME -D -s /bin/bash -G dashing dashing && \
-    chown -R dashing:dashing $DASHING_HOME
-
-USER dashing
+    rm -rf $DASHING_HOME/dashboards/* $DASHING_HOME/jobs/*
 
 COPY dashing.sh /usr/bin/dashinit
 COPY widget-install.rb $DASHING_HOME/
