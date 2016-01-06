@@ -3,6 +3,19 @@ Run [Dashing](http://dashing.io/) in a [Docker](http://docker.io/) container.
 
 Link: [hearstat/alpine-dashing](https://registry.hub.docker.com/u/hearstat/alpine-dashing/)
 
+## Dockerfiles
+Two versions are current supported.
+
+* Out of the box Dashing w/ Font Awesome 3.2.1 [DockerFile](https://github.com/HearstAT/docker-alpinedashing/blob/master/3.2.1/Dockerfile)
+* Modified version of Dashing running Font Awesome 4.5 [Dockerfile](https://github.com/HearstAT/docker-alpinedashing/blob/master/4.5/Dockerfile)
+
+## Supported Widgets
+Widgets that support Font Awesome 4.5 config and Environment being set via the dashing.conf mentioned below.
+* [Docker Hub Widget](https://gist.github.com/TheFynx/0099db153674bf83e397)
+* [Github New Feed](https://gist.github.com/TheFynx/21d51c76901e3ab3d405)
+* [Jenkins Build Status](https://gist.github.com/TheFynx/b5f2e76cd44d8c8d1619)
+* [Pagerduty](https://gist.github.com/TheFynx/8bf7f7038839742b735c)
+
 ## Run
 
     docker run -d -p 8080:3030 hearstat/alpine-dashing
@@ -36,7 +49,6 @@ widgets.yml
 ```yaml
 - 47b71cb4920fb6df1a45 #Docker Hub Widget
 - 7a346fa63e2aa5b56588 #Github News Feed
-- 45381bf1a175f64e076a #NewRelic Feed
 ```
 
     docker run -v=/path/to/widgets.yml:/dashing/widgets.yml -d -p 8080:3030 hearstat/alpine-dashing
@@ -58,8 +70,6 @@ source 'https://rubygems.org'
 
 gem 'dashing'
 gem 'faraday'
-gem 'activeresource'
-gem 'newrelic_api'
 gem 'nokogiri'
 gem 'mechanize'
 ```
